@@ -1,3 +1,6 @@
+=== 0.3.1 / 2010-07-14
+* Ruby 1.9 fix
+
 === 0.3.0 / 2009-08-16
 * New build configuration, based on Rakefiles instead of extconf.rb . Allows to compile cleanly on mswin32, mingw and *nix
 * Input string should be created with TagLib::String.new. Allows to insert UTF8 or Latin-1.
