@@ -1,16 +1,16 @@
 require 'rake'
 require 'fileutils'
-c_source="taglib_#{PLATFORM}.source"
-cpp_file="taglib_#{PLATFORM}.cxx"
+c_source="taglib_#{RUBY_PLATFORM}.source"
+cpp_file="taglib_#{RUBY_PLATFORM}.cxx"
 
-if PLATFORM=~/mswin32/
+if RUBY_PLATFORM=~/mswin32/
 	task :default => [:compile, :manifest]
 else
 	task :default => [:compile]
 end
 
 task :compile => ["Makefile",  cpp_file] do |t|
-	if PLATFORM=~/mswin32/
+	if RUBY_PLATFORM=~/mswin32/
 		system %(nmake)
 	else
 		system %(make)

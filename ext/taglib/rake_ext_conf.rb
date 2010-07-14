@@ -1,5 +1,5 @@
 require 'mkmf'
-if(PLATFORM=~/mswin32/)
+if(RUBY_PLATFORM=~/mswin32/)
 	if(File.expand_path(File.dirname(__FILE__))=~/swig/)
 	package_dir=File.expand_path(File.dirname(__FILE__)+"/..")	
 	prefix=package_dir+"/ext/taglib/taglib-mswin32"
@@ -10,7 +10,7 @@ if(PLATFORM=~/mswin32/)
 	$CFLAGS+= " -I\"#{prefix}\\include\" -I\"#{prefix}\\include\\taglib\""
         $LDFLAGS += " -link -libpath:\"#{prefix}\\lib\" "
 
-elsif(PLATFORM=~/mingw/)
+elsif(RUBY_PLATFORM=~/mingw/)
 	puts "Building for MinGW"
 	$libs = append_library($libs, "stdc++")
 	$libs = append_library($libs, "supc++")

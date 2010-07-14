@@ -11,7 +11,7 @@ $:.unshift("./lib")
 
 
 
-taglib_source="taglib_#{PLATFORM}.source"
+taglib_source="taglib_#{RUBY_PLATFORM}.source"
 desc "compile and test"
 task :default => [:compile, :test]
 

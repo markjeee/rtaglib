@@ -1,13 +1,13 @@
 require 'mkmf'
-puts "Building for #{PLATFORM}"
-if(PLATFORM=~/mswin32/)
+puts "Building for #{RUBY_PLATFORM}"
+if(RUBY_PLATFORM=~/mswin32/)
 	package_dir=File.expand_path(File.dirname(__FILE__)+"/..")	
 	prefix=package_dir+"/taglib/taglib-mswin32"
 	puts "Building for MsWin32"
 	$CFLAGS+= " -I\"#{prefix}\\include\" -I\"#{prefix}\\include\\taglib\""
         $LDFLAGS += " -link -libpath:\"#{prefix}\\lib\" "
 
-elsif(PLATFORM=~/mingw/)
+elsif(RUBY_PLATFORM=~/mingw/)
 	puts "Building for MinGW"
 	$libs = append_library($libs, "stdc++")
 	$libs = append_library($libs, "supc++")

@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 require 'fileutils'
-file="pre_taglib_#{PLATFORM}"
-out="taglib_#{PLATFORM}.cxx"
+file="pre_taglib_#{RUBY_PLATFORM}"
+out="taglib_#{RUBY_PLATFORM}.cxx"
 fo=File.open(out,"wb")
 swig_p={}
 File.open(file,"r") {|f| f.each_line {|l|

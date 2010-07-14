@@ -2,8 +2,8 @@
 require 'fileutils'
 require 'rake/testtask'
 require 'rake/rdoctask'
-pre_taglib="pre_taglib_"+PLATFORM
-taglib_cxx="taglib_#{PLATFORM}.cxx"
+pre_taglib="pre_taglib_"+RUBY_PLATFORM
+taglib_cxx="taglib_#{RUBY_PLATFORM}.cxx"
 extconf="rake_ext_conf.rb"
 task :clean do |t|
 	["*.cxx", pre_taglib, "*.def","*.exp","*.lib","*.pdb","*.obj","*.manifest","Makefile", "*.so","*.o", "taglib.cxx","*.log"].each{|glob|
@@ -19,7 +19,7 @@ end
 task :default => [:compile, :test,:copy]
 
 
-if(PLATFORM=~/mswin32/)
+if(RUBY_PLATFORM=~/mswin32/)
 	task :compile => ["TagLib.so", :manifest]
 else
 	task :compile => ["TagLib.so"]
@@ -46,7 +46,7 @@ task :test => ["TagLib.so"] do |t|
 end
 task :copy => [:test,  "TagLib_doc.rb", "TagLib.so"] do |t|
     FileUtils.cp extconf , "../ext/taglib/"
-    FileUtils.cp taglib_cxx , "../ext/taglib/"+"taglib_#{PLATFORM}.source" 
+    FileUtils.cp taglib_cxx , "../ext/taglib/"+"taglib_#{RUBY_PLATFORM}.source" 
     FileUtils.cp("test.rb","../test/test_taglib.rb")
     FileUtils.cp("TagLib_doc.rb", "../lib/")
     FileUtils.cp("TagLib.so", "../ext/taglib/")
@@ -54,7 +54,7 @@ end
 
 
 file "TagLib.so" => [taglib_cxx, "Makefile"] do |t|
-if(PLATFORM=~/mswin32/)
+if(RUBY_PLATFORM=~/mswin32/)
 	system %(nmake)
 else
 	system %(make)

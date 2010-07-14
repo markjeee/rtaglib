@@ -5,14 +5,14 @@ c_file="tagfile.c"
 ext_file="tagfile.so"
 
 
-if PLATFORM=~/mswin32/
+if RUBY_PLATFORM=~/mswin32/
 	task :default => [:compile, :manifest]
 else
 	task :default => [:compile]
 end
 
 task :compile => ["Makefile",  c_file] do |t|
-	if PLATFORM=~/mswin32/
+	if RUBY_PLATFORM=~/mswin32/
 		system %(nmake)
 	else
 		system %(make)

@@ -176,7 +176,7 @@ class RtaglibReadTestCase < Test::Unit::TestCase
         d_tag.save
         d_tag=TagLib::FileRef.new(d)
         assert_equal(d_tag.tag.artist, s_tag.tag.artist)
-	if PLATFORM=~/mswin/
+	if RUBY_PLATFORM=~/mswin/
 		else
         if(`which vorbiscomment`)
             `vorbiscomment #{d}` =~ /^ARTIST=(.+)$/
