@@ -87,3 +87,16 @@ p.remote_rdoc_dir = '' # Release to root
 p.spec_extras= {'requirements'=>'libtag >=1.5', 'extensions' => ["ext/Rakefile"]}
 end
 # vim: syntax=Ruby
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "rtaglib"
+    gemspec.summary = "Tagging Library"
+    gemspec.description = ""
+    gemspec.email = "claudio@icoretech.org"
+    gemspec.homepage = "http://github.com/masterkain/rtaglib"
+    gemspec.authors = ["Josh Nichols"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
